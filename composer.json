@@ -1,0 +1,20 @@
+{
+    "name": "agred/kuaishou",
+    "description": "快手开放平台sdk-dev",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "agred",
+            "email": "agred@163.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0"
+    },
+    "autoload" : {
+        "psr-4": {
+            "KuaiShou\\" : "KuaiShou/"
+        },
+        "files": ["Ks.php","functions.php"]
+    }
+}
