@@ -16,14 +16,12 @@ class User extends BaseApi
      * @title 获取用户信息
      * @Scope user_info
      * @url https://open.kuaishou.com/platform/openApi?group=GROUP_OPEN_PLATFORM&menu=17
-     * @param string $app_id
      * @param string $access_token
      */
-    public function userinfo($app_id, $access_token)
+    public function userinfo($access_token)
     {
-        $api_url = self::KUAISHOU_API . '/openapi/user_info/';
+        $api_url = self::OPEN_API . '/openapi/user_info/';
         $params = [
-            'app_id' => $app_id,
             'access_token' => $access_token
         ];
         return $this->https_get($api_url, $params);
@@ -38,7 +36,7 @@ class User extends BaseApi
      */
     public function userphone($app_id, $access_token)
     {
-        $api_url = self::KUAISHOU_API . '/openapi/user_phone/';
+        $api_url = self::OPEN_API . '/openapi/user_phone/';
         $params = [
             'app_id' => $app_id,
             'access_token' => $access_token

@@ -12,7 +12,7 @@ class BaseApi
 
     const SDK_VER = '1.0.1';
 
-    const KUAISHOU_API  = "https://open.kuaishou.com";
+    const OPEN_API  = "https://open.kuaishou.com";
     public $app_id    = null;
     public $app_secret = null;
 
@@ -29,15 +29,20 @@ class BaseApi
         return $this->response ? json_decode($this->response, true) : true;
     }
 
-    public function cloud_https_post($url, $data = [])
+    public function https_curl($url, $data = [])
     {
         $data['app_id'] = $this->app_id;
         $data['app_secret'] = $this->app_secret;
+        if($data){
+            $url = $url . '?' . http_build_query($data);
+        }
         $result = $this->https_request($url, $data);
         return json_decode($result, true);
     }
 
     public function https_get($url , $params = []){
+        $params['app_id'] = $this->app_id;
+        $params['app_secret'] = $this->app_secret;
         if($params){
             $url = $url . '?' . http_build_query($params);
         }
@@ -45,10 +50,15 @@ class BaseApi
         return json_decode($result, true);
     }
 
-    public function https_post($url, $data = []){
+    public function https_post($url, $params = [], $data = []){
         $header = [
-            'Accept:application/json' , 'Content-Type:application/json'
+            'Accept:application/json' , 'Content-Type:multipart/form-data'
         ];
+        $params['app_id'] = $this->app_id;
+        $params['app_secret'] = $this->app_secret;
+        if($params){
+            $url = $url . '?' . http_build_query($params);
+        }
         $result = $this->https_request($url, json_encode($data), $header);
         return json_decode($result, true);
     }
@@ -85,7 +95,7 @@ class BaseApi
             . $payload . "\r\n"
             . "--__X_PAW_BOUNDARY__\r\n"
             . "Content-Type: video/mp4\r\n"
-            . "Content-Disposition: form-data; name=\"video\"; filename=\"test.mp4\"\r\n"
+            . "Content-Disposition: form-data; name=\"file\"; filename=\"test.mp4\"\r\n"
             . "\r\n"
             . file_get_contents($file) . "\r\n"
             . "--__X_PAW_BOUNDARY__--";
@@ -109,9 +119,7 @@ class BaseApi
         }
         $output = curl_exec($curl);
         curl_close($curl);
-
-        $result = json_decode($output, true);
-        return $result['data'];
+        return json_decode($output, true);
     }
 
 }

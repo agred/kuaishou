@@ -12,6 +12,4 @@ use KuaiShou\Kernel\BaseApi;
 class Data extends BaseApi
 {
 
-
-
 }
