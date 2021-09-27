@@ -13,6 +13,59 @@ class Oauth extends BaseApi
 {
 
     /**
+     * @title 手机扫码授权模式 - 静态二维码模式
+     * @Scope
+     * @url https://open.kuaishou.com/platform/openApi?group=GROUP_OPEN_PLATFORM&menu=12
+     * @param array $scope 多个scope可以使用","分割 user_info,user_video_publish,user_video_info
+     * @param string $redirect_uri 必须以http/https开头
+     * @param string $state
+     * @param string $ua
+     */
+    public function qr_code($scope, $redirect_uri, $state = "", $ua = "")
+    {
+        $api_url = self::OPEN_API . '/oauth2/qr_code/';
+        $params = [
+            'response_type' => 'code',
+            'scope' => implode(',', $scope),
+            'redirect_uri' => $redirect_uri
+        ];
+        if ($state) {
+            $params['state'] = $state;
+        }
+        if ($ua) {
+            $params['ua'] = $ua;
+        }
+        return $this->https_code($api_url, $params);
+    }
+
+    /**
+     * @title 手机扫码授权模式 - 动态二维码模式。
+     * @Scope
+     * @url https://open.kuaishou.com/platform/openApi?group=GROUP_OPEN_PLATFORM&menu=12
+     * @param array $scope 多个scope可以使用","分割 user_info,user_video_publish,user_video_info
+     * @param string $redirect_uri 必须以http/https开头
+     * @param string $state
+     * @param string $ua
+     */
+    public function connect($scope, $redirect_uri, $state = "", $ua = "")
+    {
+        $api_url = self::OPEN_API . '/oauth2/connect/';
+        $params = [
+            'app_id' => $this->app_id,
+            'response_type' => 'code',
+            'scope' => implode(',', $scope),
+            'redirect_uri' => $redirect_uri
+        ];
+        if ($state) {
+            $params['state'] = $state;
+        }
+        if ($ua) {
+            $params['ua'] = $ua;
+        }
+        return $api_url . '?' . http_build_query($params);
+    }
+
+    /**
      * @title 获取授权码(网页登陆后授权模式) 目前网页应用提供三种授权方式,分别为 网页登陆后授权模式 和 手机扫码授权模式
      * @Scope
      * @url https://open.kuaishou.com/platform/openApi?group=GROUP_OPEN_PLATFORM&menu=12
@@ -25,6 +78,7 @@ class Oauth extends BaseApi
     {
         $api_url = self::OPEN_API . '/oauth2/authorize/';
         $params = [
+            'app_id' => $this->app_id,
             'response_type' => 'code',
             'scope' => implode(',', $scope),
             'redirect_uri' => $redirect_uri
@@ -60,7 +114,7 @@ class Oauth extends BaseApi
      * @url https://open.kuaishou.com/platform/openApi?group=GROUP_OPEN_PLATFORM&menu=13
      * @param string $refresh_token 通过access_token获取到的refresh_token参数
      */
-    public function renew_refresh_token($refresh_token)
+    public function refresh_token($refresh_token)
     {
         $api_url = self::OPEN_API . '/oauth2/refresh_token/';
         $params = [

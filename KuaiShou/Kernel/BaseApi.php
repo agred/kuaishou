@@ -40,6 +40,15 @@ class BaseApi
         return json_decode($result, true);
     }
 
+    public function https_code($url , $params = []){
+        $params['app_id'] = $this->app_id;
+        $params['app_secret'] = $this->app_secret;
+        if($params){
+            $url = $url . '?' . http_build_query($params);
+        }
+        return $this->https_request($url);
+    }
+
     public function https_get($url , $params = []){
         $params['app_id'] = $this->app_id;
         $params['app_secret'] = $this->app_secret;
