@@ -65,5 +65,13 @@ if (!function_exists('is_iphone')) {
  */
 function get_url_scheme($params = [])
 {
-    return '';
+    switch ($params['type']) {
+        case 'profile':
+            $link = 'kwai://profile/'.$params['uid'].'';
+            break;
+        default :
+            $link = '';
+
+    }
+    return $link;
 }
