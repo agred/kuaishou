@@ -10,7 +10,7 @@ namespace KuaiShou\Kernel;
 class BaseApi
 {
 
-    const SDK_VER = '1.0.1';
+    const SDK_VER = '1.0.5';
 
     const OPEN_API  = "https://open.kuaishou.com";
     public $app_id    = null;
@@ -59,16 +59,14 @@ class BaseApi
         return json_decode($result, true);
     }
 
-    public function https_post($url, $params = [], $data = []){
-        $header = [
-            'Accept:application/json' , 'Content-Type:multipart/form-data'
-        ];
+    public function https_post($url, $params = [], $data = [], $header = true){
+        $header = $header ? ['Accept:application/json' , 'Content-Type:multipart/form-data'] : [];
         $params['app_id'] = $this->app_id;
         $params['app_secret'] = $this->app_secret;
         if($params){
             $url = $url . '?' . http_build_query($params);
         }
-        $result = $this->https_request($url, json_encode($data), $header);
+        $result = $this->https_request($url, $data, $header);
         return json_decode($result, true);
     }
 

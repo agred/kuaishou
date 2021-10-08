@@ -75,7 +75,7 @@ class Video extends BaseApi
         $params = [
             'access_token' => $access_token
         ];
-        return $this->https_post($api_url, $params);
+        return $this->https_post($api_url, $params, '', false);
     }
 
 
@@ -155,19 +155,14 @@ class Video extends BaseApi
      * @url https://open.kuaishou.com/platform/openApi?group=GROUP_OPEN_PLATFORM&menu=20
      * @param string $access_token 授权token
      * @param string $upload_token 上传令牌
-     * @param string $cover 视频封面
-     * @param string $caption 标题
+     * @param array $body body参数
      */
-    public function video_upload_publish($access_token, $upload_token, $cover , $caption)
+    public function video_upload_publish($access_token, $upload_token, $body = [])
     {
         $api_url = self::OPEN_API . '/openapi/photo/publish/';
         $params = [
             'access_token' => $access_token,
             'upload_token' => $upload_token,
-        ];
-        $body = [
-            'cover' => $cover,
-            'caption' => $caption,
         ];
         return $this->https_post($api_url, $params, $body);
     }
