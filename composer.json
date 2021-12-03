@@ -13,8 +13,8 @@
     },
     "autoload" : {
         "psr-4": {
-            "KuaiShou\\" : "KuaiShou/"
+            "KuaiShou\\" : "src/KuaiShou/"
         },
-        "files": ["Ks.php","functions.php"]
+        "files": ["src/Ks.php","src/functions.php"]
     }
 }
