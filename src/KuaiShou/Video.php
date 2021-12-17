@@ -75,7 +75,7 @@ class Video extends BaseApi
         $params = [
             'access_token' => $access_token
         ];
-        return $this->https_post($api_url, $params, '', false);
+        return $this->https_post($api_url, $params);
     }
 
 
@@ -164,7 +164,7 @@ class Video extends BaseApi
             'access_token' => $access_token,
             'upload_token' => $upload_token,
         ];
-        return $this->https_post($api_url, $params, $body);
+        return $this->https_file($api_url, $params, $body);
     }
 
 
