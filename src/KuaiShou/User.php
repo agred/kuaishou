@@ -20,7 +20,7 @@ class User extends BaseApi
      */
     public function userinfo($access_token)
     {
-        $api_url = self::OPEN_API . '/openapi/user_info/';
+        $api_url = self::OPEN_API . '/openapi/user_info';
         $params = [
             'access_token' => $access_token
         ];
@@ -36,7 +36,7 @@ class User extends BaseApi
      */
     public function userphone($app_id, $access_token)
     {
-        $api_url = self::OPEN_API . '/openapi/user_phone/';
+        $api_url = self::OPEN_API . '/openapi/user_phone';
         $params = [
             'app_id' => $app_id,
             'access_token' => $access_token

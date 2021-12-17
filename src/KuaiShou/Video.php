@@ -22,7 +22,7 @@ class Video extends BaseApi
      */
     public function video_list($access_token, $cursor = 0, $count = 20)
     {
-        $api_url = self::OPEN_API . '/openapi/photo/list/';
+        $api_url = self::OPEN_API . '/openapi/photo/list';
         $params = [
             'access_token' => $access_token,
             'cursor' => $cursor,
@@ -40,7 +40,7 @@ class Video extends BaseApi
      */
     public function video_info($access_token, $photo_id)
     {
-        $api_url = self::OPEN_API . '/openapi/photo/info/';
+        $api_url = self::OPEN_API . '/openapi/photo/info';
         $params = [
             'access_token' => $access_token,
             'photo_id' => $photo_id
@@ -56,7 +56,7 @@ class Video extends BaseApi
      */
     public function video_count($access_token)
     {
-        $api_url = self::OPEN_API . '/openapi/photo/count/';
+        $api_url = self::OPEN_API . '/openapi/photo/count';
         $params = [
             'access_token' => $access_token
         ];
@@ -71,7 +71,7 @@ class Video extends BaseApi
      */
     public function video_start_upload($access_token)
     {
-        $api_url = self::OPEN_API . '/openapi/photo/start_upload/';
+        $api_url = self::OPEN_API . '/openapi/photo/start_upload';
         $params = [
             'access_token' => $access_token
         ];
@@ -159,7 +159,7 @@ class Video extends BaseApi
      */
     public function video_upload_publish($access_token, $upload_token, $body = [])
     {
-        $api_url = self::OPEN_API . '/openapi/photo/publish/';
+        $api_url = self::OPEN_API . '/openapi/photo/publish';
         $params = [
             'access_token' => $access_token,
             'upload_token' => $upload_token,
@@ -177,7 +177,7 @@ class Video extends BaseApi
      */
     public function video_delete($access_token, $photo_id)
     {
-        $api_url = self::OPEN_API . '/openapi/photo/delete/';
+        $api_url = self::OPEN_API . '/openapi/photo/delete';
         $params = [
             'access_token' => $access_token,
             'photo_id' => $photo_id

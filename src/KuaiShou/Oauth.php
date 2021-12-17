@@ -23,7 +23,7 @@ class Oauth extends BaseApi
      */
     public function qr_code($scope, $redirect_uri, $state = "", $ua = "")
     {
-        $api_url = self::OPEN_API . '/oauth2/qr_code/';
+        $api_url = self::OPEN_API . '/oauth2/qr_code';
         $params = [
             'response_type' => 'code',
             'scope' => implode(',', $scope),
@@ -49,7 +49,7 @@ class Oauth extends BaseApi
      */
     public function connect($scope, $redirect_uri, $state = "", $ua = "")
     {
-        $api_url = self::OPEN_API . '/oauth2/connect/';
+        $api_url = self::OPEN_API . '/oauth2/connect';
         $params = [
             'app_id' => $this->app_id,
             'response_type' => 'code',
@@ -76,7 +76,7 @@ class Oauth extends BaseApi
      */
     public function authorize($scope, $redirect_uri, $state = "", $ua = "")
     {
-        $api_url = self::OPEN_API . '/oauth2/authorize/';
+        $api_url = self::OPEN_API . '/oauth2/authorize';
         $params = [
             'app_id' => $this->app_id,
             'response_type' => 'code',
@@ -100,7 +100,7 @@ class Oauth extends BaseApi
      */
     public function access_token($code)
     {
-        $api_url = self::OPEN_API . '/oauth2/access_token/';
+        $api_url = self::OPEN_API . '/oauth2/access_token';
         $params = [
             'code' => $code,
             'grant_type' => 'authorization_code'
@@ -116,7 +116,7 @@ class Oauth extends BaseApi
      */
     public function refresh_token($refresh_token)
     {
-        $api_url = self::OPEN_API . '/oauth2/refresh_token/';
+        $api_url = self::OPEN_API . '/oauth2/refresh_token';
         $params = [
             'refresh_token' => $refresh_token,
             'grant_type' => 'refresh_token'
