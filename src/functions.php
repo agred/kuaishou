@@ -13,7 +13,7 @@ use KuaiShou\Kernel\BaseApi;
 function get_query_str($url, $key)
 {
     $res = '';
-    $a = strpos($url, '?');
+    $a   = strpos($url, '?');
     if ($a !== false) {
         $str = substr($url, $a + 1);
         $arr = explode('&', $str);
@@ -67,7 +67,7 @@ function get_url_scheme($params = [])
 {
     switch ($params['type']) {
         case 'profile':
-            $link = 'kwai://profile/'.$params['uid'].'';
+            $link = 'kwai://profile/' . $params['uid'] . '';
             break;
         default :
             $link = '';

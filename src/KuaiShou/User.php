@@ -11,7 +11,6 @@ use KuaiShou\Kernel\BaseApi;
  */
 class User extends BaseApi
 {
-
     /**
      * @title 获取用户信息
      * @Scope user_info
@@ -20,8 +19,8 @@ class User extends BaseApi
      */
     public function userinfo($access_token)
     {
-        $api_url = self::OPEN_API . '/openapi/user_info';
-        $params = [
+        $api_url = self::API_KS . '/openapi/user_info';
+        $params  = [
             'access_token' => $access_token
         ];
         return $this->https_get($api_url, $params);
@@ -36,17 +35,16 @@ class User extends BaseApi
      */
     public function userphone($app_id, $access_token)
     {
-        $api_url = self::OPEN_API . '/openapi/user_phone';
-        $params = [
-            'app_id' => $app_id,
+        $api_url = self::API_KS . '/openapi/user_phone';
+        $params  = [
+            'app_id'       => $app_id,
             'access_token' => $access_token
         ];
-        $iv = substr($this->app_secret, 0, 16);
-        if($response = $this->https_get($api_url, $params)) {
+        $iv      = substr($this->app_secret, 0, 16);
+        if ($response = $this->https_get($api_url, $params)) {
             $encrypted_phone = $response['encrypted_phone'];
             return openssl_decrypt($encrypted_phone, 'aes-256-cbc', $this->app_secret, 0, $iv);
         }
         return false;
     }
-
 }

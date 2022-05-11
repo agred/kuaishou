@@ -11,7 +11,6 @@ use KuaiShou\Kernel\BaseApi;
  */
 class Oauth extends BaseApi
 {
-
     /**
      * @title 手机扫码授权模式 - 静态二维码模式
      * @Scope
@@ -23,11 +22,11 @@ class Oauth extends BaseApi
      */
     public function qr_code($scope, $redirect_uri, $state = "", $ua = "")
     {
-        $api_url = self::OPEN_API . '/oauth2/qr_code';
-        $params = [
+        $api_url = self::API_KS . '/oauth2/qr_code';
+        $params  = [
             'response_type' => 'code',
-            'scope' => implode(',', $scope),
-            'redirect_uri' => $redirect_uri
+            'scope'         => implode(',', $scope),
+            'redirect_uri'  => $redirect_uri
         ];
         if ($state) {
             $params['state'] = $state;
@@ -49,12 +48,12 @@ class Oauth extends BaseApi
      */
     public function connect($scope, $redirect_uri, $state = "", $ua = "")
     {
-        $api_url = self::OPEN_API . '/oauth2/connect';
-        $params = [
-            'app_id' => $this->app_id,
+        $api_url = self::API_KS . '/oauth2/connect';
+        $params  = [
+            'app_id'        => $this->app_id,
             'response_type' => 'code',
-            'scope' => implode(',', $scope),
-            'redirect_uri' => $redirect_uri
+            'scope'         => implode(',', $scope),
+            'redirect_uri'  => $redirect_uri
         ];
         if ($state) {
             $params['state'] = $state;
@@ -76,12 +75,12 @@ class Oauth extends BaseApi
      */
     public function authorize($scope, $redirect_uri, $state = "", $ua = "")
     {
-        $api_url = self::OPEN_API . '/oauth2/authorize';
-        $params = [
-            'app_id' => $this->app_id,
+        $api_url = self::API_KS . '/oauth2/authorize';
+        $params  = [
+            'app_id'        => $this->app_id,
             'response_type' => 'code',
-            'scope' => implode(',', $scope),
-            'redirect_uri' => $redirect_uri
+            'scope'         => implode(',', $scope),
+            'redirect_uri'  => $redirect_uri
         ];
         if ($state) {
             $params['state'] = $state;
@@ -100,9 +99,9 @@ class Oauth extends BaseApi
      */
     public function access_token($code)
     {
-        $api_url = self::OPEN_API . '/oauth2/access_token';
-        $params = [
-            'code' => $code,
+        $api_url = self::API_KS . '/oauth2/access_token';
+        $params  = [
+            'code'       => $code,
             'grant_type' => 'authorization_code'
         ];
         return $this->https_get($api_url, $params);
@@ -116,12 +115,11 @@ class Oauth extends BaseApi
      */
     public function refresh_token($refresh_token)
     {
-        $api_url = self::OPEN_API . '/oauth2/refresh_token';
-        $params = [
+        $api_url = self::API_KS . '/oauth2/refresh_token';
+        $params  = [
             'refresh_token' => $refresh_token,
-            'grant_type' => 'refresh_token'
+            'grant_type'    => 'refresh_token'
         ];
         return $this->https_get($api_url, $params);
     }
-
 }

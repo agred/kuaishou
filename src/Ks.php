@@ -13,7 +13,6 @@ use KuaiShou\Kernel\DataArray;
  */
 class Ks
 {
-
     /**
      * 静态配置
      */
@@ -41,9 +40,9 @@ class Ks
      * @param $arguments
      * @return mixed
      */
-    public static function __callStatic($name , $arguments)
+    public static function __callStatic($name, $arguments)
     {
-        $name = ucfirst(strtolower($name));
+        $name  = ucfirst(strtolower($name));
         $class = "\\KuaiShou\\{$name}";
 
         if (!empty($class) && class_exists($class)) {
@@ -52,5 +51,4 @@ class Ks
             return new $class($config);
         }
     }
-
 }

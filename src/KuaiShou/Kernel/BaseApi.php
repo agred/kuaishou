@@ -9,8 +9,7 @@ namespace KuaiShou\Kernel;
  */
 class BaseApi
 {
-
-    const SDK_VER = '1.0.7';
+    const SDK_VER = '1.0.8';
 
     const OPEN_API  = "https://open.kuaishou.com";
     public $app_id    = null;
@@ -37,7 +36,11 @@ class BaseApi
             $url = $url . '?' . http_build_query($data);
         }
         $result = $this->https_request($url, $data);
-        return json_decode($result, true);
+        if (is_null(json_decode($result))) {
+            return $result;
+        } else {
+            return json_decode($result, true);
+        }
     }
 
     public function https_code($url , $params = []){
@@ -56,7 +59,11 @@ class BaseApi
             $url = $url . '?' . http_build_query($params);
         }
         $result = $this->https_request($url);
-        return json_decode($result, true);
+        if (is_null(json_decode($result))) {
+            return $result;
+        } else {
+            return json_decode($result, true);
+        }
     }
 
     public function https_post($url, $params = [], $data = [], $header = true){
@@ -67,7 +74,11 @@ class BaseApi
             $url = $url . '?' . http_build_query($params);
         }
         $result = $this->https_request($url, json_encode($data), $header);
-        return json_decode($result, true);
+        if (is_null(json_decode($result))) {
+            return $result;
+        } else {
+            return json_decode($result, true);
+        }
     }
 
     public function https_file($url, $params = [], $data = [], $header = true){
@@ -78,7 +89,11 @@ class BaseApi
             $url = $url . '?' . http_build_query($params);
         }
         $result = $this->https_request($url, $data, $header);
-        return json_decode($result, true);
+        if (is_null(json_decode($result))) {
+            return $result;
+        } else {
+            return json_decode($result, true);
+        }
     }
 
     public function https_request($url, $data = null, $headers = null)

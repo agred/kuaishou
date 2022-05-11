@@ -4,5 +4,5 @@ namespace KuaiShou\Model;
 
 class VideoDataBody
 {
-    public $photo_ids  = [] ;
+    public $photo_ids = [];
 }

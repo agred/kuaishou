@@ -11,7 +11,6 @@ use KuaiShou\Kernel\BaseApi;
  */
 class Video extends BaseApi
 {
-
     /**
      * @title 查询授权账号视频数据
      * @Scope user_video_info
@@ -22,11 +21,11 @@ class Video extends BaseApi
      */
     public function video_list($access_token, $cursor = 0, $count = 20)
     {
-        $api_url = self::OPEN_API . '/openapi/photo/list';
-        $params = [
+        $api_url = self::API_KS . '/openapi/photo/list';
+        $params  = [
             'access_token' => $access_token,
-            'cursor' => $cursor,
-            'count' => $count
+            'cursor'       => $cursor,
+            'count'        => $count
         ];
         return $this->https_get($api_url, $params);
     }
@@ -40,12 +39,12 @@ class Video extends BaseApi
      */
     public function video_info($access_token, $photo_id)
     {
-        $api_url = self::OPEN_API . '/openapi/photo/info';
-        $params = [
+        $api_url = self::API_KS . '/openapi/photo/info';
+        $params  = [
             'access_token' => $access_token,
-            'photo_id' => $photo_id
+            'photo_id'     => $photo_id
         ];
-        return $this->https_get($api_url , $params);
+        return $this->https_get($api_url, $params);
     }
 
     /**
@@ -56,11 +55,11 @@ class Video extends BaseApi
      */
     public function video_count($access_token)
     {
-        $api_url = self::OPEN_API . '/openapi/photo/count';
-        $params = [
+        $api_url = self::API_KS . '/openapi/photo/count';
+        $params  = [
             'access_token' => $access_token
         ];
-        return $this->https_get($api_url , $params);
+        return $this->https_get($api_url, $params);
     }
 
     /**
@@ -71,8 +70,8 @@ class Video extends BaseApi
      */
     public function video_start_upload($access_token)
     {
-        $api_url = self::OPEN_API . '/openapi/photo/start_upload';
-        $params = [
+        $api_url = self::API_KS . '/openapi/photo/start_upload';
+        $params  = [
             'access_token' => $access_token
         ];
         return $this->https_post($api_url, $params);
@@ -89,7 +88,7 @@ class Video extends BaseApi
      */
     public function video_upload_binary($endpoint, $upload_token, $file)
     {
-        $api_url = 'http://'.$endpoint . '/api/upload?upload_token=' . $upload_token;
+        $api_url = 'http://' . $endpoint . '/api/upload?upload_token=' . $upload_token;
         return $this->https_byte($api_url, $file);
     }
 
@@ -103,7 +102,7 @@ class Video extends BaseApi
      */
     public function video_upload_multipart($endpoint, $upload_token, $file)
     {
-        $api_url = 'http://'.$endpoint . '/api/upload/multipart?upload_token=' . $upload_token;
+        $api_url = 'http://' . $endpoint . '/api/upload/multipart?upload_token=' . $upload_token;
         return $this->https_byte($api_url, $file);
     }
 
@@ -117,7 +116,7 @@ class Video extends BaseApi
      */
     public function video_upload_fragment($endpoint, $upload_token, $fragment_id)
     {
-        $api_url = 'http://'.$endpoint . '/api/upload/fragment?upload_token=' . $upload_token;
+        $api_url = 'http://' . $endpoint . '/api/upload/fragment?upload_token=' . $upload_token;
         return $this->https_byte($api_url, $fragment_id);
     }
 
@@ -131,7 +130,7 @@ class Video extends BaseApi
      */
     public function video_upload_resume($endpoint, $upload_token, $fragment_id)
     {
-        $api_url = 'http://'.$endpoint . '/api/upload/resume?upload_token=' . $upload_token;
+        $api_url = 'http://' . $endpoint . '/api/upload/resume?upload_token=' . $upload_token;
         return $this->https_byte($api_url, $fragment_id);
     }
 
@@ -143,9 +142,9 @@ class Video extends BaseApi
      * @param string $upload_token 上传令牌
      * @param string $fragment_id 分片id 从0开始
      */
-    public function video_upload_complete($endpoint, $upload_token, $fragment_count )
+    public function video_upload_complete($endpoint, $upload_token, $fragment_count)
     {
-        $api_url = 'http://'.$endpoint . '/api/upload/complete?upload_token=' . $upload_token;
+        $api_url = 'http://' . $endpoint . '/api/upload/complete?upload_token=' . $upload_token;
         return $this->https_post($api_url, $fragment_count);
     }
 
@@ -159,14 +158,13 @@ class Video extends BaseApi
      */
     public function video_upload_publish($access_token, $upload_token, $body = [])
     {
-        $api_url = self::OPEN_API . '/openapi/photo/publish';
-        $params = [
+        $api_url = self::API_KS . '/openapi/photo/publish';
+        $params  = [
             'access_token' => $access_token,
             'upload_token' => $upload_token,
         ];
         return $this->https_file($api_url, $params, $body);
     }
-
 
     /**
      * @title 删除视频
@@ -177,12 +175,11 @@ class Video extends BaseApi
      */
     public function video_delete($access_token, $photo_id)
     {
-        $api_url = self::OPEN_API . '/openapi/photo/delete';
-        $params = [
+        $api_url = self::API_KS . '/openapi/photo/delete';
+        $params  = [
             'access_token' => $access_token,
-            'photo_id' => $photo_id
+            'photo_id'     => $photo_id
         ];
-        return $this->https_post($api_url , $params);
+        return $this->https_post($api_url, $params);
     }
-
 }

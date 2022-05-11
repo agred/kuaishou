@@ -11,7 +11,6 @@ use KuaiShou\Kernel\BaseApi;
  */
 class Data extends BaseApi
 {
-
     /**
      * @title 内容接口 - 获取定向配置
      * @Scope user_fanstop_photo
@@ -20,8 +19,8 @@ class Data extends BaseApi
      */
     public function fanstop_photo_config_orientation($access_token)
     {
-        $api_url = self::OPEN_API . '/openapi/fanstop/photo/config/orientation';
-        $params = [
+        $api_url = self::API_KS . '/openapi/fanstop/photo/config/orientation';
+        $params  = [
             'access_token' => $access_token
         ];
         return $this->https_post($api_url, $params);
@@ -35,8 +34,8 @@ class Data extends BaseApi
      */
     public function fanstop_photo_config_targetIndustry($access_token)
     {
-        $api_url = self::OPEN_API . '/openapi/fanstop/photo/config/targetIndustry';
-        $params = [
+        $api_url = self::API_KS . '/openapi/fanstop/photo/config/targetIndustry';
+        $params  = [
             'access_token' => $access_token
         ];
         return $this->https_post($api_url, $params);
@@ -51,10 +50,10 @@ class Data extends BaseApi
      */
     public function fanstop_photo_config_influencer($access_token, $keyword)
     {
-        $api_url = self::OPEN_API . '/openapi/fanstop/photo/config/influencer';
-        $params = [
+        $api_url = self::API_KS . '/openapi/fanstop/photo/config/influencer';
+        $params  = [
             'access_token' => $access_token,
-            'keyword' => $keyword
+            'keyword'      => $keyword
         ];
         return $this->https_post($api_url, $params);
     }
@@ -69,11 +68,11 @@ class Data extends BaseApi
      */
     public function fanstop_photo_config_dmp($access_token, $openId, $industryId)
     {
-        $api_url = self::OPEN_API . '/openapi/fanstop/photo/config/dmp';
-        $params = [
+        $api_url = self::API_KS . '/openapi/fanstop/photo/config/dmp';
+        $params  = [
             'access_token' => $access_token,
-            'openId' => $openId,
-            'industryId' => $industryId
+            'openId'       => $openId,
+            'industryId'   => $industryId
         ];
         return $this->https_post($api_url, $params);
     }
@@ -86,8 +85,8 @@ class Data extends BaseApi
      */
     public function fanstop_photo_balance_account($access_token)
     {
-        $api_url = self::OPEN_API . '/openapi/fanstop/photo/balanceAccount';
-        $params = [
+        $api_url = self::API_KS . '/openapi/fanstop/photo/balanceAccount';
+        $params  = [
             'access_token' => $access_token
         ];
         return $this->https_get($api_url, $params);
@@ -101,8 +100,8 @@ class Data extends BaseApi
      */
     public function fanstop_photo_price_list($access_token)
     {
-        $api_url = self::OPEN_API . '/openapi/fanstop/photo/priceList';
-        $params = [
+        $api_url = self::API_KS . '/openapi/fanstop/photo/priceList';
+        $params  = [
             'access_token' => $access_token
         ];
         return $this->https_get($api_url, $params);
@@ -117,8 +116,8 @@ class Data extends BaseApi
      */
     public function fanstop_photo_show_by_cost($access_token, $body)
     {
-        $api_url = self::OPEN_API . '/openapi/fanstop/photo/showByCost';
-        $params = [
+        $api_url = self::API_KS . '/openapi/fanstop/photo/showByCost';
+        $params  = [
             'access_token' => $access_token
         ];
         return $this->https_post($api_url, $params, $body);
@@ -133,10 +132,10 @@ class Data extends BaseApi
      */
     public function fanstop_photo_spread_intention($access_token, $photoIds)
     {
-        $api_url = self::OPEN_API . '/openapi/fanstop/photo/spreadIntention';
-        $params = [
+        $api_url = self::API_KS . '/openapi/fanstop/photo/spreadIntention';
+        $params  = [
             'access_token' => $access_token,
-            'photoIds' => $photoIds
+            'photoIds'     => $photoIds
         ];
         return $this->https_get($api_url, $params);
     }
@@ -150,9 +149,9 @@ class Data extends BaseApi
      */
     public function fanstop_photo_heat_price_option($access_token, $spreadIntention)
     {
-        $api_url = self::OPEN_API . '/openapi/fanstop/photo/heatPriceOption';
-        $params = [
-            'access_token' => $access_token,
+        $api_url = self::API_KS . '/openapi/fanstop/photo/heatPriceOption';
+        $params  = [
+            'access_token'    => $access_token,
             'spreadIntention' => $spreadIntention
         ];
         return $this->https_get($api_url, $params);
@@ -167,8 +166,8 @@ class Data extends BaseApi
      */
     public function fanstop_photo_order_create_junior($access_token, $body)
     {
-        $api_url = self::OPEN_API . '/openapi/fanstop/photo/order/create/junior';
-        $params = [
+        $api_url = self::API_KS . '/openapi/fanstop/photo/order/create/junior';
+        $params  = [
             'access_token' => $access_token
         ];
         return $this->https_post($api_url, $params, $body);
@@ -183,8 +182,8 @@ class Data extends BaseApi
      */
     public function fanstop_photo_order_create_senior($access_token, $body)
     {
-        $api_url = self::OPEN_API . '/openapi/fanstop/photo/order/create/senior';
-        $params = [
+        $api_url = self::API_KS . '/openapi/fanstop/photo/order/create/senior';
+        $params  = [
             'access_token' => $access_token
         ];
         return $this->https_post($api_url, $params, $body);
@@ -199,10 +198,10 @@ class Data extends BaseApi
      */
     public function fanstop_photo_order_close($access_token, $ksOrderId)
     {
-        $api_url = self::OPEN_API . '/openapi/fanstop/photo/order/close';
-        $params = [
+        $api_url = self::API_KS . '/openapi/fanstop/photo/order/close';
+        $params  = [
             'access_token' => $access_token,
-            'ksOrderId' => $ksOrderId
+            'ksOrderId'    => $ksOrderId
         ];
         return $this->https_post($api_url, $params);
     }
@@ -216,10 +215,10 @@ class Data extends BaseApi
      */
     public function fanstop_photo_order_stat($access_token, $ksOrderIds)
     {
-        $api_url = self::OPEN_API . '/openapi/fanstop/photo/order/stat';
-        $params = [
+        $api_url = self::API_KS . '/openapi/fanstop/photo/order/stat';
+        $params  = [
             'access_token' => $access_token,
-            'ksOrderIds' => $ksOrderIds
+            'ksOrderIds'   => $ksOrderIds
         ];
         return $this->https_get($api_url, $params);
     }
