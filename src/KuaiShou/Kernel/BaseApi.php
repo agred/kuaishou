@@ -9,9 +9,9 @@ namespace KuaiShou\Kernel;
  */
 class BaseApi
 {
-    const SDK_VER = '1.0.8';
+    const SDK_VER = '1.0.9';
 
-    const OPEN_API  = "https://open.kuaishou.com";
+    const API_KS  = "https://open.kuaishou.com";
     public $app_id    = null;
     public $app_secret = null;
 
